@@ -1,31 +1,35 @@
-#simple calculator
+# Simple calculator
 
-#Addition function
+# Addition function
 def add(x, y):
     return x + y
 
-#Subtraction function
+
+# Subtraction function
 def sub(x, y):
-    return x-y
+    return x - y
 
 
-#Multiplication function
+# Multiplication function
 def mul(x, y):
-    return x*y
+    return x * y
 
-#divide function
+
+# Divide function
 def divide(x, y):
     if y == 0:
         return "we can't divide by zero"
     return x / y
 
-#Power function
+
+# Power function
 def power(x, y):
     if y == 0:
         return 1
     return x ** y
 
-#Root function
+
+# Root function
 def root(x, n):
     if n == 0:
         return "root degree can't be zero"
@@ -93,4 +97,6 @@ def main():
         else:
             print("invalid input, enter valid number or press 'q' to quit.")
 
+
+# Run the main function (The program)
 main()
