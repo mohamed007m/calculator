@@ -6,12 +6,12 @@ def add(x, y):
 
 #Subtraction function
 def sub(x, y):
-    return
+    return x-y
 
 
 #Multiplication function
 def mul(x, y):
-    return
+    return x*y
 
 #divide function
 def divide(x, y):
@@ -25,9 +25,13 @@ def power(x, y):
         return 1
     return x ** y
 
-#SquareRoot function
-def sqr(x):
-    return
+#Root function
+def root(x, n):
+    if n == 0:
+        return "root degree can't be zero"
+    if x < 0 and n % 2 == 0:
+        return "can't take even root of negative number"
+    return x ** (1 / n)
 
 
 # interface and methodology
@@ -40,16 +44,16 @@ def main():
     print("3. multiplication")
     print("4. division")
     print("5. power")
-    print("6. squareRoot")
+    print("6. root")
 
     while True:
         choice = input("Enter your choice or press 'q' to quit: ")
 
         if choice.lower() == 'q':
-            print("Thank you for using  our calculator. See you next time!")
+            print("Thank you for using our calculator. See you next time!")
             break
 
-        if choice in ('1', '2', '3', '4', '5', '6'):
+        if choice in ('1', '2', '3', '4'):
             try:
                 num1 = float(input("enter your first number: "))
                 num2 = float(input("enter your second number: "))
@@ -58,20 +62,35 @@ def main():
                 continue
 
             if choice == '1':
-                print(f" ans: {num1} + {num2} = {add(num1, num2)}")
+                print(f"ans: {num1} + {num2} = {add(num1, num2)}")
             elif choice == '2':
-                print(f" ans: {num1} - {num2} = {sub(num1, num2)}")
+                print(f"ans: {num1} - {num2} = {sub(num1, num2)}")
             elif choice == '3':
-                print(f" ans: {num1} * {num2} = {mul(num1, num2)}")
+                print(f"ans: {num1} * {num2} = {mul(num1, num2)}")
             elif choice == '4':
-                print(f" ans: {num1} / {num2} = {divide(num1, num2)}")
-            elif choice == '5':
-                print(f" ans: {num1} ^ {num2} = {power(num1, num2)}")
-            elif choice == '6':
-                print(f" ans: root({num1}) = {sqr(num1)}")
+                print(f"ans: {num1} / {num2} = {divide(num1, num2)}")
+
+        elif choice == '5':
+            try:
+                base = float(input("enter the base: "))
+                exponent = float(input("enter the exponent: "))
+            except ValueError:
+                print("please enter a number.")
+                continue
+
+            print(f"ans: {base} ^ {exponent} = {power(base, exponent)}")
+
+        elif choice == '6':
+            try:
+                num = float(input("enter the number: "))
+                degree = float(input("enter the root degree: "))
+            except ValueError:
+                print("please enter a number.")
+                continue
+
+            print(f"ans: root({num}, {degree}) = {root(num, degree)}")
 
         else:
-            print("invalid input,enter valid number or press 'q' to quit.")
-
+            print("invalid input, enter valid number or press 'q' to quit.")
 
 main()
