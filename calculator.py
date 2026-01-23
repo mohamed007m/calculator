@@ -18,7 +18,8 @@ def mul(x, y):
 # Divide function
 def divide(x, y):
     if y == 0:
-        return "we can't divide by zero"
+          print("we can't divide by zero")
+          return None 
     return x / y
 
 
@@ -32,15 +33,18 @@ def power(x, y):
 # Root function
 def root(x, n):
     if n == 0:
-        return "root degree can't be zero"
+         print("root degree can't be zero")
+         return None
     if x < 0 and n % 2 == 0:
-        return "can't take even root of negative number"
+         print("can't take even root of negative number")
+         return None
     return x ** (1 / n)
 
 
 # interface and methodology
 
 def main():
+    ans = None
     print("--- Simple Calculator ---\n")
     print("choose an operation:")
     print("1. addition")
@@ -59,40 +63,79 @@ def main():
 
         if choice in ('1', '2', '3', '4'):
             try:
-                num1 = float(input("enter your first number: "))
-                num2 = float(input("enter your second number: "))
+              if ans is not None:
+                  use_ans = input("Do you want to use previous answer? (y/n): ")
+                  if use_ans.lower()=='y':
+                      num1 = ans
+                  else :
+                      num1=float(input("enter your first number: "))
+              else:
+                  num1=float(input("enter your first number: "))
+
+              num2 = float(input("enter your second number: "))
+              
             except ValueError:
                 print("please enter a number.")
                 continue
 
             if choice == '1':
-                print(f"ans: {num1} + {num2} = {add(num1, num2)}")
+                ans = add(num1, num2)
+                print(f"ans: {num1} + {num2} = {ans}")
             elif choice == '2':
-                print(f"ans: {num1} - {num2} = {sub(num1, num2)}")
+                ans = sub(num1, num2)
+                print(f"ans: {num1} - {num2} = {ans}")
             elif choice == '3':
-                print(f"ans: {num1} * {num2} = {mul(num1, num2)}")
+                ans = mul(num1, num2)
+                print(f"ans: {num1} * {num2} = {ans}")
             elif choice == '4':
-                print(f"ans: {num1} / {num2} = {divide(num1, num2)}")
+                result = divide(num1, num2)
+                if result is None:
+                   continue
+                ans = result
+                print(f"ans: {num1} / {num2} = {ans}")
 
         elif choice == '5':
             try:
-                base = float(input("enter the base: "))
+                if ans is not None:
+                  use_ans = input("Do you want to use previous answer? (y/n): ")
+                  if use_ans.lower()=='y':
+                      base = ans
+                  else :
+                      base=float(input("enter your base number: "))
+                else:
+                   base=float(input("enter your base number: "))
+
                 exponent = float(input("enter the exponent: "))
+
             except ValueError:
                 print("please enter a number.")
                 continue
-
-            print(f"ans: {base} ^ {exponent} = {power(base, exponent)}")
+            ans = power(base, exponent)
+            print(f"ans: {base} ^ {exponent} = {ans}")
 
         elif choice == '6':
             try:
-                num = float(input("enter the number: "))
-                degree = float(input("enter the root degree: "))
+                if ans is not None:
+                  use_ans = input("Do you want to use previous answer? (y/n): ")
+                  if use_ans.lower()=='y':
+                      num = ans
+                  else :
+                      num = float(input("enter the number: "))
+                else:
+                      num = float(input("enter the number: "))
+
+                degree = int(input("enter the root degree: "))
+                
+                
             except ValueError:
                 print("please enter a number.")
                 continue
 
-            print(f"ans: root({num}, {degree}) = {root(num, degree)}")
+            result = root(num, degree)
+            if result is None:
+                 continue
+            ans = result
+            print(f"ans: root({num}, {degree}) = {ans}")
 
         else:
             print("invalid input, enter valid number or press 'q' to quit.")
