@@ -12,7 +12,7 @@ The calculator supports the following operations:
 * **Multiplication (*):** Product of two numbers.
 * **Division (/):** Quotient of two numbers (includes zero-division protection).
 * **Power (^):** Raises a base number to a specified exponent.
-* **Square Root (√):** Calculates the square root of a number.
+* **Root (√):** Calculates the root of a number.
 
 ## 🛠️ Tech Stack
 * **Language:** Python 3.x
